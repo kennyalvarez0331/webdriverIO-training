@@ -3,8 +3,7 @@ import chai from "chai";
 
 Given(/^Google page is opened$/, async function(){
     await browser.url("https://www.google.com")
-    await browser.pause(7000)
-
+    
 })
 
 When(/^Search with (.*)$/, async function(searchItem){
@@ -22,6 +21,9 @@ Then(/^Click on the first search result$/, async function(){
 
 Then(/^URL should match (.*)$/, async function(expectedURL){
     console.log(`expectedURL: ${expectedURL}`);
+    await browser.waitUntil(async () => {
+        return await browser.getTitle() === "WebdriverIO · Next-gen browser and mobile automation test framework for Node.js | WebdriverIO"
+    }, {timeout: 20000, interval: 500, timeoutMsg: `Failed loading WDIO web page\ncurrent web page:${await browser.getTitle()}`})
     const url = await browser.getUrl()
     chai.expect(url).to.equal(expectedURL)
 })
