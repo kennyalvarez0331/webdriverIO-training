@@ -31,10 +31,7 @@ Given(/^Login to inventory web app$/, async function() {
     // await browser.pause(1000)
     // await $(`#password`).setValue("secret_sauce")
     // await $(`#login-button`).click()
-    await browser.pause(1000)
-    await browser.back()
-    await browser.pause(2000)
-    await browser.forward()
+
     
     await browser.pause(3000)
 })
